@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'toppages/index'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 # get 'tasks/:id', to: 'tasks#show'
 # post 'tasks', to: 'tasks#create'
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
 # get 'tasks', to: 'tasks#index'
 # get 'tasks',to: 'tasks#new'
 # get 'tasks/:id/edit', to: 'tasks#edit'
-root to: 'tasks#index'
+root to: 'toppages#index'
 
 resources :tasks
 end
