@@ -1,0 +1,38 @@
+<ul class="media-list">
+  <% taskposts.each do |taskpost| %>
+    <li class="media">
+      <div class="media-left">
+        <img class="media-object img-rounded" src="<%= gravatar_url(taskpost.user, { size: 50 }) %>" alt="">
+      </div>
+      <div class="media-body">
+        <div>
+          <%= link_to taskpost.user.name, user_path(taskpost.user) %> <span class="text-muted">posted at <%= taskpost.created_at %></span>
+        </div>
+        <div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ステータス</th>
+                <th>タスク</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @taskposts.each do |taskpost| %>
+                <tr>
+                  <td><%= taskpost.status %></td>
+                  <td><%= taskpost.content %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <div>
+          <% if current_user == taskpost.user %>
+            <%= link_to "Delete", taskpost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+          <% end %>
+        </div>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  <%= paginate taskposts %>
+</ul>

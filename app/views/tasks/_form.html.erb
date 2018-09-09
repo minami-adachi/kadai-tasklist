@@ -11,17 +11,14 @@
           </ul>
         </div>
       <% end %>
-      
       <div class="gorm-group">
         <%= f.label :status, 'ステータス' %>
         <%= f.text_field :status, class: 'form-control' %>
       </div>
-      
       <div class="form-group">
         <%= f.label :content, 'タスク' %>
         <%= f.text_field :content, class: 'form-control' %>
       </div>
-      
       <%= f.submit '投稿', class: 'btn btn-primary' %>
     <% end %>
   </div>
