@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
-  get 'toppages/index'
+  get 'sessions/new'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-# get 'tasks/:id', to: 'tasks#show'
-# post 'tasks', to: 'tasks#create'
-# put 'tasks/:id', to: 'tasks#update'
-# delete 'tasks/:id', to: 'tasks#destroy'
+  get 'sessions/create'
 
-# get 'tasks', to: 'tasks#index'
-# get 'tasks',to: 'tasks#new'
-# get 'tasks/:id/edit', to: 'tasks#edit'
-root to: 'toppages#index'
+  get 'sessions/destroy'
 
-resources :tasks
+  root to: 'toppages#index'
+  
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+
+  resources :tasks
+  
+  get 'signup', to: 'users#new'
+  resources :users, only: [:index, :show, :new, :create]
 end
